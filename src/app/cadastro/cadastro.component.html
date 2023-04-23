@@ -1,7 +1,7 @@
 <main class="principal">
   <h2 class="principal__titulo">Dados do cadastro</h2>
 
-  <form class="principal__formulario" id="formulario">
+  <form class="principal__formulario" id="formulario" #f="ngForm" (ngSubmit)="cadastrar(f)">
     <h3 class="principal__subtitulo">Dados pessoais</h3>
     <div class="formulario__campo">
       <label class="campo__etiqueta" for="nome">Nome Completo</label>
@@ -22,15 +22,12 @@
       <input name="email" id="email" type="email" class="campo__escrita"/>
     </div>
 
-
     <h3 class="principal__subtitulo">Endereço</h3>
-
     <div class="formulario__campo">
       <label class="campo__etiqueta" for="cep">CEP</label>
       <input name="cep" id="cep" class="campo__escrita" />
       <div id="erro"></div>
     </div>
-
     <div class="formulario__campo">
       <label class="campo__etiqueta" for="endereco">Endereço</label>
       <input name="endereco" id="endereco" class="campo__escrita" />
@@ -90,6 +87,7 @@
       </div>
 
     </div>
-      <button type="submit" class="formulario__botao">Enviar formulário</button>
-    </form>
+
+    <button type="submit" class="formulario__botao">Enviar formulário</button>
+  </form>
 </main>
