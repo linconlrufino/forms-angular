@@ -17,11 +17,11 @@
         
       <div *ngIf="(nome?.invalid && nome?.touched) || nome?.dirty">
         <app-mensagem *ngIf="nome.errors?.['required']"
-          mensagem="O campo de nome deve ser preenchido.">
+          mensagem = "O campo de nome deve ser preenchido.">
         </app-mensagem>
 
         <app-mensagem *ngIf="nome.errors?.['minlength']"
-          mensagem="O campo de nome deve possuir no mínimo 2 caracteres.">
+          mensagem = "O campo de nome deve possuir no mínimo 2 caracteres.">
         </app-mensagem>
       </div>
     </div>
@@ -35,12 +35,14 @@
         <label class="campo__etiqueta" for="telefone">Contato</label>
         <input name="telefone" id="telefone" type="tel" ngModel required pattern="(\(?\d{2}\)?\s?)(\d{5}\-?\d{4})" placeholder="(XX) XXXXX-XXXX" class="campo__escrita"/>
         <div *ngIf="(formulario.controls['telefone']?.invalid && formulario.controls['telefone']?.touched) || formulario.controls['telefone']?.dirty">
-          <span class="erro__texto" *ngIf="formulario.controls['telefone']?.errors?.['required']">
-            O campo de telefone deve ser preenchido.
-          </span>
-          <span class="erro__texto" *ngIf="formulario.controls['telefone']?.errors?.['pattern']">
-            Telefone preenchido é inválido.
-          </span>
+          <app-mensagem 
+            *ngIf="formulario.controls['telefone']?.errors?.['required']" 
+            mensagem = 'O campo de telefone deve ser preenchido.'>
+          </app-mensagem>
+          <app-mensagem 
+            *ngIf="formulario.controls['telefone']?.errors?.['pattern']"
+            mensagem= 'O telefone preenchido é inválido.'>
+          </app-mensagem>
         </div>
       </div>
     </div>
