@@ -16,7 +16,7 @@ export class  MaiorIdadeDirective implements Validator {
     const anoNascimento = new Date(control.value).getFullYear();
     const anoAtual = new Date().getFullYear();
 
-    const maiorDeIdade = anoNascimento + 18 >= anoAtual;
+    const maiorDeIdade = anoNascimento + 18 <= anoAtual;
 
     return maiorDeIdade ? null : {'maiorIdadeValidator' : true };  
   }

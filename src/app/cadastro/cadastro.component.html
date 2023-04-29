@@ -35,6 +35,7 @@
           type="date" 
           class="campo__escrita" 
           ngModel
+          maiorIdadeValidator
           #nascimento="ngModel"/>
           <div *ngIf="(nascimento?.invalid && nascimento?.touched) || nascimento?.dirty">
             <app-mensagem *ngIf="nascimento.errors?.['required']"
@@ -43,6 +44,10 @@
 
             <app-mensagem *ngIf="nascimento.errors?.['minlength']"
               mensagem = "O campo de nascimento deve possuir no mínimo 2 caracteres.">
+            </app-mensagem>
+
+            <app-mensagem *ngIf="nascimento.errors?.['maiorIdadeValidator']"
+              mensagem = "O usuário deve ter mais de 18 anos.">
             </app-mensagem>
           </div>
       </div>
