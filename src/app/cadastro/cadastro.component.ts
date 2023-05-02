@@ -24,8 +24,29 @@ export class CadastroComponent implements OnInit {
       alert('Formulario inválido')
   }
 
-  consultaCEP(ev: any){
-    const cep = ev.target.value;
-    return this.consultaCepService.getConsultaCep(cep).subscribe( res => console.log(res));
+  populateEndereco(response: any, formulario: NgForm) {
+    formulario.form.patchValue({
+      endereco: response.logradouro,
+      complemento: response.complemento,
+      bairro: response.bairro,
+      cidade: response.localidade,
+      estado: response.uf,
+    })
   }
+
+  consultaCEP(ev: any, formulario : NgForm){
+    const cep = ev.target.value;
+
+    if(!cep)
+      return null;
+
+    return this.consultaCepService.getConsultaCep(cep).subscribe( response => {
+        console.log(response);
+        this.populateEndereco(response, formulario);
+      }
+    );
+  }
+
+
+  
 }
