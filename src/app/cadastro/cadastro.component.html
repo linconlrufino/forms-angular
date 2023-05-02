@@ -115,6 +115,7 @@
         pattern="^(\d{5})(-?\d{3})$"
         minlength="8"
         maxlength="9"
+        validandoCep
         (blur)="consultaCEP($event,formulario)"/>
       <div *ngIf="(cep?.invalid && cep.touched) || cep?.dirty">
         <app-mensagem 
@@ -124,6 +125,10 @@
         <app-mensagem 
           *ngIf="cep?.errors?.['pattern']" 
           mensagem="O campo de cep é inválido">
+        </app-mensagem>
+        <app-mensagem 
+          *ngIf="cep?.errors?.['cepInvalido']" 
+          mensagem="O cep informado não existe">
         </app-mensagem>
       </div>
     </div>
